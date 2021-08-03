@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+<head>
+<meta charset="UTF-8" />
+<title>NU Maps</title>
+<meta name="robots" content="noindex,nofollow" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<link rel="stylesheet" href="./css/reset.css" />
+<!-- BootstrapのCSS読み込み -->
+<link href="./css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Londrina+Shadow" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500&display=swap" rel="stylesheet">
+<script src="./js/jquery-1.5.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- BootstrapのJS読み込み -->
+<script src="./js/bootstrap.min.js"></script>
+<script src="./js/script.js"></script>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<!-- default（Safariと同じ） / black（黒） / black-translucent（ステータスバーをコンテンツに含める） -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<!-- ホーム画面に表示されるアプリ名 -->
+<meta name="apple-mobile-web-app-title" content="NU-Maps">
+<!-- ホーム画面に表示されるアプリアイコン -->
+<link rel="apple-touch-icon" href="./images/img.png">
+<script type="text/javascript" src="./hum_icon.js"></script>
+<link rel="stylesheet" type="text/css" href="./style.css">
+<link rel="manifest" href="./manifest.json">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VP9W3MY5PK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-VP9W3MY5PK');
+</script>
+
+<style>
+body{
+ margin: 0;
+}
+.navi_item a{
+ color: #fff; /*メニューの色*/
+ text-decoration: none;
+}
+.mainView{
+ width: 100vw;
+ height: 100vh;
+ background-color: #;
+}
+/*ハンバーガーボタン*/
+.el_humburger {
+ position: fixed;
+ top: 25px;
+ right: 40px;
+ width: 46px;
+ height: 50px;
+ padding-top: 1px;
+ -webkit-box-sizing: border-box;
+ box-sizing: border-box;
+ padding-top: 0px;
+ z-index: 20;
+ cursor: pointer;
+ pointer-events: auto;
+ color: #ffffff;
+ text-align: center;}
+
+@media screen and (max-width: 840px) {
+ .el_humburger {
+	 display: white;
+	 color: #ffffff;
+	 right: 0;
+	 top: 0;
+	 padding-top: 20px;
+	 width: 70px;
+	 height: 90px;}
+	 #factory .el_humburger {
+		 display: ; } }
+
+.el_humburger_wrapper {
+ margin-bottom: 5px;
+ width: 42px;
+ display: inline-block; }
+
+@media screen and (max-width: 840px) {
+ .el_humburger_wrapper {
+	 margin-bottom: 5px;
+	 width: 30px; } }
+
+.el_humburger_text {
+ font-size: 12px;
+ letter-spacing: 0.1em;
+ font-family: "游ゴシック Medium", YuGothic, "Yu Gothic", "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, sans-serif; }
+
+.js_humburgerOpen .el_humburger_text.el_humburger_text__menu {
+ display: none; }
+
+.el_humburger_text.el_humburger_text__close {
+ display: none; }
+
+.js_humburgerOpen .el_humburger_text.el_humburger_text__close {
+ display: white; }
+
+@media screen and (max-width: 840px) {
+ .el_humburger_text {
+	 font-size: 10px;
+	 padding-top: 2px; } }
+
+@media screen and (max-width: 840px) {
+ .el_humburger_text svg path {
+	 -webkit-transition: all 2000ms cubic-bezier(0.16, 0.52, 0.25, 1);
+	 -o-transition: all 2000ms cubic-bezier(0.16, 0.52, 0.25, 1);
+	 transition: all 2000ms cubic-bezier(0.16, 0.52, 0.25, 1);
+	 fill: #fff; } }
+
+@media screen and (max-width: 840px) {
+ .js_humburgerOpen .el_humburger_text svg path {
+	 fill: #fff; } }
+
+.el_humburger span.el_humburger_bar {
+ display: block;
+ width: 100%;
+ margin: 0 auto 7.2px;  /*アイコンの太さ*/
+ height: 3px;         /*アイコンの太さ*/
+ background: #ffffff;
+ -webkit-transition: all .2s ease-in-out;
+ -o-transition: all .2s ease-in-out;
+ transition: all .2s ease-in-out; }
+
+.el_humburger span.el_humburger_bar:last-child {
+ margin-bottom: 0; }
+
+.js_humburgerOpen .el_humburger span.el_humburger_bar {
+ background: #fff; }
+
+@media screen and (max-width: 840px) {
+ .el_humburger span.el_humburger_bar {
+	 left: 0;
+	 top: 0;
+	 background: #fff; } } /*色変更*/
+
+.js_humburgerOpen .el_humburger span.el_humburger_bar.top {
+ -webkit-transform: translateY(9px) rotate(-45deg);
+ -ms-transform: translateY(9px) rotate(-45deg);
+ transform: translateY(9px) rotate(-45deg); }
+
+.js_humburgerOpen .el_humburger span.el_humburger_bar.middle {
+ opacity: 0; }
+
+.js_humburgerOpen .el_humburger span.el_humburger_bar.bottom {
+ -webkit-transform: translateY(-11px) rotate(45deg);
+ -ms-transform: translateY(-11px) rotate(45deg);
+ transform: translateY(-11px) rotate(45deg); }
+
+.el_humburgerButton.el_humburgerButton__close {
+ top: 2%;
+ right: 2%; }
+
+.el_humburgerButton__close span.el_humburger_bar {
+ display: block;
+ width: 35px;
+ margin: 0 auto;
+ height: 4px;
+ background: #fff; }
+
+.el_humburgerButton__close span.el_humburger_bar.top {
+ -webkit-transform: translateY(5px) rotate(-45deg);
+ -ms-transform: translateY(5px) rotate(-45deg);
+ transform: translateY(5px) rotate(-45deg); }
+
+.el_humburgerButton__close span.el_humburger_bar.bottom {
+ -webkit-transform: translateY(-6px) rotate(45deg);
+ -ms-transform: translateY(-6px) rotate(45deg);
+ transform: translateY(-6px) rotate(45deg); }
+
+.navi {
+ position: fixed;
+ right: 0;
+ height: 100%;
+ background-color: #4bacbb;
+ width: 0;
+ z-index: 3;
+ padding-top: 100px;
+ -webkit-box-sizing: border-box;
+ box-sizing: border-box;
+ -webkit-transition: all 100ms ease-out;
+ -o-transition: all 100ms ease-out;
+ transition: all 200ms ease-out;
+ overflow: hidden; }
+ .js_humburgerOpen .navi {
+	 width: 300px; }
+	 @media screen and (max-width: 840px) {                                                                                                                                       e
+		 .js_humburgerOpen .navi {
+			 width: 100%;
+			 padding: 100px 5% 0; } }
+
+.navi_item {
+ margin-bottom: 28px;
+ font-size: 20px;
+ color: white;
+/* font-family: "Marcellus", serif !important;*/
+ white-space: nowrap;
+/*margin-left: 90px;*/ }
+ .navi_item.op_innerLink {
+	 cursor: pointer; }
+ @media screen and (max-width: 840px) {
+	 .navi_item {
+		 margin-left: 0;
+		 font-size: 18px; } }
+
+</style>
+<style>
+body {
+	color: #454545;
+	background: #4bacbb;
+}
+#form_submit{
+	text-align: center;
+}
+
+</style>
+<link rel="stylesheet" href="./css/mailform.css" />
+
+<!-- ご希望の日時選択ライブラリここから -->
+<link rel="stylesheet" href="./css/jquery.datetimepicker.css" />
+<!-- ご希望の日時選択ライブラリここまで -->
+</head>
+
+<header style="background-color: #4BACBB;"class="header_m">
+	<div  class="el_humburger"><!--ハンバーガーボタン-->
+		 <div class="el_humburger_wrapper">
+			 <span class="el_humburger_bar top"></span>
+			 <span class="el_humburger_bar middle"></span>
+			 <span class="el_humburger_bar bottom"></span>
+		 </div>
+	 </div>
+		<div style="text-align:center;margin-top:-13px;">
+		<a href="javascript:history.back()">
+			<div id="back">
+				<img src="images/back_button.png" width="40%" />
+			</div>
+		</a>
+
+				<div class="navi"><!--ナビゲーション-->
+					<div class="navi_inner">
+						<div class="navi_item"><a href="howto.html">NU MAPSの使い方</a></div>
+						<div class="navi_item"><a href="http://www.nagoya-u.ac.jp/">名大公式ホームページ</a></div>
+					</div>
+				</div>
+					<div style="margin-top:-18px;">
+					<div href="index.html" id="title1">
+						<img class="logo" src="./images/logo_mark_with_smalltype.png" width="35px;" height="45px;" />
+					</div>
+				</div>
+				</div>
+
+</header>
+<body>
+<div style="margin-top:-22px;">
+<div id="header1"></div>
+</div>
+
+<div style="text-align:center; font-size:25px; color:white;margin-top: 50px;">　</div>
+<div style="text-align:center;">
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLScw-1_YaKAXpRBhbbfbDqT180agniVevzt0XKvdcGpf3smlcQ/viewform?embedded=true" width="370" height="635" frameborder="0" marginheight="0" marginwidth="0">読み込んでいます…</iframe>
+</div>
+<script>
+//変数定義
+var navigationOpenFlag = false;
+var navButtonFlag = true;
+var focusFlag = false;
+
+//ハンバーガーメニュー
+		$(function(){
+
+			$(document).on('click','.el_humburger',function(){
+				if(navButtonFlag){
+					spNavInOut.switch();
+					//一時的にボタンを押せなくする
+					setTimeout(function(){
+						navButtonFlag = true;
+					},200);
+					navButtonFlag = false;
+				}
+			});
+			$(document).on('click touchend', function(event) {
+				if (!$(event.target).closest('.bl_header,.el_humburger').length && $('body').hasClass('js_humburgerOpen') && focusFlag) {
+					focusFlag = false;
+					//scrollBlocker(false);
+					spNavInOut.switch();
+				}
+			});
+		});
+
+//ナビ開く処理
+function spNavIn(){
+	$('body').removeClass('js_humburgerClose');
+	$('body').addClass('js_humburgerOpen');
+	setTimeout(function(){
+		focusFlag = true;
+	},200);
+	setTimeout(function(){
+		navigationOpenFlag = true;
+	},200);
+}
+
+//ナビ閉じる処理
+function spNavOut(){
+	$('body').removeClass('js_humburgerOpen');
+	$('body').addClass('js_humburgerClose');
+	setTimeout(function(){
+		$(".uq_spNavi").removeClass("js_appear");
+		focusFlag = false;
+	},200);
+	navigationOpenFlag = false;
+}
+
+//ナビ開閉コントロール
+var spNavInOut = {
+	switch:function(){
+		if($('body.spNavFreez').length){
+			return false;
+		}
+		if($('body').hasClass('js_humburgerOpen')){
+		 spNavOut();
+		} else {
+		 spNavIn();
+		}
+	}
+};
+</script>
+
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>NU Maps</title>
+    <!-- BootstrapのCSS読み込み -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <!-- フォント -->
+    <link href="https://fonts.googleapis.com/css?family=Londrina+Shadow" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Londrina+Shadow" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500&display=swap" rel="stylesheet" />
+    <script src="js/jquery-1.5.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous">
+    </script>
+    <!-- BootstrapのJS読み込み -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/script.js"></script>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <!-- default（Safariと同じ） / black（黒） / black-translucent（ステータスバーをコンテンツに含める） -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <!-- ホーム画面に表示されるアプリ名 -->
+    <meta name="apple-mobile-web-app-title" content="NU-Maps" />
+    <!-- ホーム画面に表示されるアプリアイコン -->
+    <link rel="apple-touch-icon" href="images/img.png" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="manifest" href="manifest.json" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VP9W3MY5PK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-VP9W3MY5PK');
+
+    
+    </script>    
+
+    <script>
+      //位置情報取得
+      window.onload = function() {
+        var storage = localStorage;
+        let building = localStorage.getItem(0);
+        let room = localStorage.getItem(1);
+        let lat = localStorage.getItem(2);
+        let log = localStorage.getItem(3);
+
+        $('#lat').val(String(lat));
+        $('#log').val(String(log));
+        document.getElementById('building').value = localStorage.getItem(0);
+        document.getElementById('room').value = localStorage.getItem(1);
+        document.getElementById('btn').click()
+      }
+    </script>
+  </head>
+
+  <header>
+      <div id="back11">
+        <div onclick="clickBtn5()">
+          <div id="back">
+            <img src="images/back_button.png" width="40%" />
+          </div>
+        </div>
+        <div class="navi">
+          <div class="navi_inner">
+            <div class="navi_item"><a href="howto_en.html">Instruction of NU MAPS</a></div>
+          <div class="navi_item"><a href="contact_en.html">Inquiry/Requests</a></div>
+          <div class="navi_item"><a href="http://www.nagoya-u.ac.jp/">Nagoya Univ. Official Website</a></div>
+          </div>
+        </div>
+        <a href="index.html" id="title">
+          <img class="logo" src="images/logo_mark_with_smalltype.png"width="35px;" height="45px;" />
+        </a>
+        <div  class="el_humburger">
+        <div class="el_humburger_wrapper">
+          <span class="el_humburger_bar top"></span>
+          <span class="el_humburger_bar middle"></span>
+          <span class="el_humburger_bar bottom"></span>
+        </div>
+        </div>
+      </div>
+  </header>
+
+  <body>
+    <div id="header"></div>
+    <div class="mainView">
+    <div id="labelCode_2" value="100"></div>
+    <div id="floating-panel" style="height: 0%;">
+
+ 
+      <div class="present_selec">
+        
+
+
+
+
+        <input style="height: 0px; width: 0px;position: absolute;margin-top: -600px;"id="building" value="" >
+        <input style="height: 0px; width: 0px;position: absolute;margin-top: -600px;"id="room" value="" >
+    
+  
+      <div class="search">
+        <button
+          id="btn"
+          style="background-color: #288FA3; width: 0px;height: 0px; position: absolute;margin-top: -600px; "
+        >
+          <div id="label10" style="font-size: 25px;" class="search-title"></div>
+        </button>
+      </div>
+      </div>
+    </div>
+    <div id="map"></div>
+    <div id="lat" value=""></div>
+    <div id="log" value=""></div>
+    <div id="error" value=""></div>
+  </div>
+
+
+    <script>
+      //言語設定
+      function testSelect() {
+        if (document.getElementById('labelCode_2').value == '999') {
+          document.getElementById('labelCode_2').value = '000';
+          document.getElementById('label1').innerText = 'お知らせ';
+          document.getElementById('label2').innerText = 'NU-Mapsの使い方';
+          document.getElementById('label3').innerText = '言語/Language';
+          document.getElementById('label4').innerText = 'ログイン';
+          document.getElementById('label5').innerText = '現在地';
+          document.getElementById('label6').innerText = '目的地';
+          document.getElementById('building').value = '';
+          document.getElementById('room').value = '';
+          document.getElementById('start').value = '名古屋大学駅';
+          document.getElementById('label10').innerText = '検索';
+        } else {
+          document.getElementById('labelCode_2').value = '999';
+          document.getElementById('label1').innerText = 'News';
+          document.getElementById('label2').innerText = 'How to use NU-Maps';
+          document.getElementById('label3').innerText = '言語/Language';
+          document.getElementById('label4').innerText = 'Login';
+          document.getElementById('label5').innerText = 'Present location';
+          document.getElementById('label6').innerText = 'Destination';
+          document.getElementById('building').value = '-';
+          document.getElementById('room').value = '-';
+          document.getElementById('start').value = '名古屋大学駅/';
+          document.getElementById('label10').innerText = 'Search';
+        }
+        return true;
+      }
+    </script>
+
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCf-1L_AYDveGBZ_a5cU3BjQx8r68Qjpo&callback=initMap"></script>
+
+    <script>
+      //PWA関係
+      <!-- service workerの登録関係
+      -->
+      if
+      ('serviceWorker'
+      in
+      navigator)
+      {
+      navigator.serviceWorker.register('service_worker.js').then(function (registration)
+      {
+      console.log('ServiceWorker
+      registration
+      successful
+      with
+      scope:
+      ',
+      registration.scope);
+      }).catch(function (err)
+      {
+      console.log('ServiceWorker
+      registration
+      failed:
+      ',
+      err);
+      });
+      }
+    </script>
+
+  </body>
+</html>

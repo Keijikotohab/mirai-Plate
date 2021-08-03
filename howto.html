@@ -1,0 +1,342 @@
+<!doctype html>
+<html data-n-head-ssr lang="ja" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22ja%22%7D%7D">
+  <head >
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>NU Maps</title>
+    <!-- BootstrapのCSS読み込み -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Londrina+Shadow" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500&display=swap" rel="stylesheet" />
+    <script src="js/jquery-1.5.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- BootstrapのJS読み込み -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/script10.js"></script>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <!-- default（Safariと同じ） / black（黒） / black-translucent（ステータスバーをコンテンツに含める） -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <!-- ホーム画面に表示されるアプリ名 -->
+    <meta name="apple-mobile-web-app-title" content="NU-Maps" />
+    <!-- ホーム画面に表示されるアプリアイコン -->
+    <link rel="apple-touch-icon" href="images/img.png" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="style2.css" />
+    <link rel="manifest" href="manifest.json" />
+
+    <style>
+      body{
+       margin: 0;
+      }
+      .navi_item a{
+       color: #fff; /*メニューの色*/
+       text-decoration: none;
+      }
+      .mainView{
+       width: 100vw;
+       height: 100vh;
+       background-color: #;
+      }
+      /*ハンバーガーボタン*/
+      .el_humburger {
+       position: fixed;
+       top: 25px;
+       right: 40px;
+       width: 46px;
+       height: 50px;
+       padding-top: 1px;
+       -webkit-box-sizing: border-box;
+       box-sizing: border-box;
+       padding-top: 0px;
+       z-index: 20;
+       cursor: pointer;
+       pointer-events: auto;
+       color: #ffffff;
+       text-align: center;}
+      
+      @media screen and (max-width: 840px) {
+       .el_humburger {
+         display: white;
+         color: #ffffff;
+         right: 0;
+         top: 0;
+         padding-top: 20px;
+         width: 70px;
+         height: 90px;}
+         #factory .el_humburger {
+           display: ; } }
+      
+      .el_humburger_wrapper {
+       margin-bottom: 5px;
+       width: 42px;
+       display: inline-block; }
+      
+      @media screen and (max-width: 840px) {
+       .el_humburger_wrapper {
+         margin-bottom: 5px;
+         width: 30px; } }
+      
+      .el_humburger_text {
+       font-size: 12px;
+       letter-spacing: 0.1em;
+       font-family: "游ゴシック Medium", YuGothic, "Yu Gothic", "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, sans-serif; }
+      
+      .js_humburgerOpen .el_humburger_text.el_humburger_text__menu {
+       display: none; }
+      
+      .el_humburger_text.el_humburger_text__close {
+       display: none; }
+      
+      .js_humburgerOpen .el_humburger_text.el_humburger_text__close {
+       display: white; }
+      
+      @media screen and (max-width: 840px) {
+       .el_humburger_text {
+         font-size: 10px;
+         padding-top: 2px; } }
+      
+      @media screen and (max-width: 840px) {
+       .el_humburger_text svg path {
+         -webkit-transition: all 2000ms cubic-bezier(0.16, 0.52, 0.25, 1);
+         -o-transition: all 2000ms cubic-bezier(0.16, 0.52, 0.25, 1);
+         transition: all 2000ms cubic-bezier(0.16, 0.52, 0.25, 1);
+         fill: #fff; } }
+      
+      @media screen and (max-width: 840px) {
+       .js_humburgerOpen .el_humburger_text svg path {
+         fill: #fff; } }
+      
+      .el_humburger span.el_humburger_bar {
+       display: block;
+       width: 100%;
+       margin: 0 auto 7.2px;  /*アイコンの太さ*/
+       height: 3px;         /*アイコンの太さ*/
+       background: #ffffff;
+       -webkit-transition: all .2s ease-in-out;
+       -o-transition: all .2s ease-in-out;
+       transition: all .2s ease-in-out; }
+      
+      .el_humburger span.el_humburger_bar:last-child {
+       margin-bottom: 0; }
+      
+      .js_humburgerOpen .el_humburger span.el_humburger_bar {
+       background: #fff; }
+      
+      @media screen and (max-width: 840px) {
+       .el_humburger span.el_humburger_bar {
+         left: 0;
+         top: 0;
+         background: #fff; } } /*色変更*/
+      
+      .js_humburgerOpen .el_humburger span.el_humburger_bar.top {
+       -webkit-transform: translateY(9px) rotate(-45deg);
+       -ms-transform: translateY(9px) rotate(-45deg);
+       transform: translateY(9px) rotate(-45deg); }
+      
+      .js_humburgerOpen .el_humburger span.el_humburger_bar.middle {
+       opacity: 0; }
+      
+      .js_humburgerOpen .el_humburger span.el_humburger_bar.bottom {
+       -webkit-transform: translateY(-11px) rotate(45deg);
+       -ms-transform: translateY(-11px) rotate(45deg);
+       transform: translateY(-11px) rotate(45deg); }
+      
+      .el_humburgerButton.el_humburgerButton__close {
+       top: 2%;
+       right: 2%; }
+      
+      .el_humburgerButton__close span.el_humburger_bar {
+       display: block;
+       width: 35px;
+       margin: 0 auto;
+       height: 4px;
+       background: #fff; }
+      
+      .el_humburgerButton__close span.el_humburger_bar.top {
+       -webkit-transform: translateY(5px) rotate(-45deg);
+       -ms-transform: translateY(5px) rotate(-45deg);
+       transform: translateY(5px) rotate(-45deg); }
+      
+      .el_humburgerButton__close span.el_humburger_bar.bottom {
+       -webkit-transform: translateY(-6px) rotate(45deg);
+       -ms-transform: translateY(-6px) rotate(45deg);
+       transform: translateY(-6px) rotate(45deg); }
+      
+      .navi {
+       position: fixed;
+       right: 0;
+       height: 100%;
+       background-color: #4bacbb;
+       width: 0;
+       z-index: 3;
+       padding-top: 100px;
+       -webkit-box-sizing: border-box;
+       box-sizing: border-box;
+       -webkit-transition: all 100ms ease-out;
+       -o-transition: all 100ms ease-out;
+       transition: all 200ms ease-out;
+       overflow: hidden; }
+       .js_humburgerOpen .navi {
+         width: 300px; }
+         @media screen and (max-width: 840px) {                                                                                                                                       e
+           .js_humburgerOpen .navi {
+             width: 100%;
+             padding: 100px 5% 0; } }
+      
+      .navi_item {
+       margin-bottom: 28px;
+       font-size: 20px;
+       color: white;
+      /* font-family: "Marcellus", serif !important;*/
+       white-space: nowrap;
+      /*margin-left: 90px;*/ }
+       .navi_item.op_innerLink {
+         cursor: pointer; }
+       @media screen and (max-width: 840px) {
+         .navi_item {
+           margin-left: 0;
+           font-size: 18px; } }
+      
+      </style>
+      <style>
+      body {
+        color: #454545;
+        background: #4bacbb;
+      }
+      #form_submit{
+        text-align: center;
+      }
+      .room{
+        height: 50px;
+      }
+
+      </style>
+      <link rel="stylesheet" href="./css/mailform.css" />
+      
+      <!-- ご希望の日時選択ライブラリここから -->
+      <link rel="stylesheet" href="./css/jquery.datetimepicker.css" />
+      <!-- ご希望の日時選択ライブラリここまで -->
+      </head>
+
+      <header style="margin-top:0px; background-color: #4BACBB;"class="header_m">
+        <div  class="el_humburger"><!--ハンバーガーボタン-->
+           <div class="el_humburger_wrapper">
+             <span class="el_humburger_bar top"></span>
+             <span class="el_humburger_bar middle"></span>
+             <span class="el_humburger_bar bottom"></span>
+           </div>
+         </div>
+          <div style="text-align:center;margin-top:-13px;">
+          <a href="javascript:history.back()">
+            <div id="back">
+              <img src="images/back_button.png" width="40%" />
+            </div>
+          </a>
+      
+              <div class="navi"><!--ナビゲーション-->
+                <div class="navi_inner">
+                  <div class="navi_item"><a href="contact_ja.html">ご意見/ご要望</a></div>
+                  <div class="navi_item"><a href="http://www.nagoya-u.ac.jp/">名大公式ホームページ</a></div>
+                </div>
+              </div>
+                <div style="margin-top:-18px;">
+                <div href="index.html" id="title1">
+                  <img class="logo" src="./images/logo_mark_with_smalltype.png" width="35px;" height="45px;" />
+                </div>
+              </div>
+              </div>
+      
+      </header>
+  </head>
+  
+  
+  <body>
+    <div class="room"></div>
+  <div>
+    <div class="" data-v-1b7ef8c6 data-v-0edd3ed5></div> 
+    <main> 
+      <article class="p-article__body" data-v-51fc48a0> 
+        <div class="p-article__content" data-v-51fc48a0>
+          <div data-note-id="24074828" data-note-key="n881c652750db" data-v-51fc48a0>
+            <div class="o-noteContentText o-noteContentText--font_sansserif" data-v-07d3b562>
+              <h1 class="o-noteContentText__title" data-v-07d3b562>
+              NU MAPSの使い方
+              </h1> 
+              <div data-name="body" class="note-common-styles__textnote-body" data-v-07d3b562>
+                <h3 name="rhIgg">1. ログイン画面</h3><p name="LH2jX"><img src="data:image/svg+xml;charset=utf8,%3Csvg%20viewBox%3D%220%200%20100%20100%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22a%22%3E%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23f7f9f9%22%2F%3E%3Cstop%20offset%3D%2233%25%22%20stop-color%3D%22%23f7f9f9%22%2F%3E%3Cstop%20offset%3D%2250%25%22%20stop-color%3D%22%23fff%22%2F%3E%3Cstop%20offset%3D%2267%25%22%20stop-color%3D%22%23f7f9f9%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23f7f9f9%22%2F%3E%3CanimateTransform%20attributeName%3D%22gradientTransform%22%20type%3D%22translate%22%20from%3D%22-1%200%22%20to%3D%221%200%22%20begin%3D%220s%22%20dur%3D%221.5s%22%20repeatCount%3D%22indefinite%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Cpath%20class%3D%22rect%22%20fill%3D%22url(%23a)%22%20d%3D%22M-100-100h300v300h-300z%22%2F%3E%3C%2Fsvg%3E" width="620" height="1102" style="width: 372px; height: 661px;" alt="画像1" data-src="https://assets.st-note.com/production/uploads/images/40016030/picture_pc_0a15805a64f648c41a835ee75edf4ae5.jpeg?width=800" class="lazyload"></p><p name="ANJeK"><b>・名大IDでログイン</b><br>名大IDとパスワードを入力することで学内関係者専用のコンテンツを利用できるようになります。</p><p name="cGmmi"><b>・ログインなしで利用</b><br>セキュリティ上、公開範囲が制限されます。</p><p name="0FAeE"><b>・言語設定<br></b>右下のボタンをタップすると使用言語を 日本語 ⇔ 英語 に変更できます。<br></p><h3 name="4kqAn">2. 検索画面</h3><p name="oDvua"><img src="data:image/svg+xml;charset=utf8,%3Csvg%20viewBox%3D%220%200%20100%20100%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22a%22%3E%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23f7f9f9%22%2F%3E%3Cstop%20offset%3D%2233%25%22%20stop-color%3D%22%23f7f9f9%22%2F%3E%3Cstop%20offset%3D%2250%25%22%20stop-color%3D%22%23fff%22%2F%3E%3Cstop%20offset%3D%2267%25%22%20stop-color%3D%22%23f7f9f9%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23f7f9f9%22%2F%3E%3CanimateTransform%20attributeName%3D%22gradientTransform%22%20type%3D%22translate%22%20from%3D%22-1%200%22%20to%3D%221%200%22%20begin%3D%220s%22%20dur%3D%221.5s%22%20repeatCount%3D%22indefinite%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Cpath%20class%3D%22rect%22%20fill%3D%22url(%23a)%22%20d%3D%22M-100-100h300v300h-300z%22%2F%3E%3C%2Fsvg%3E" width="620" height="1102" style="width: 372px; height: 661px;" alt="画像2" data-src="https://assets.st-note.com/production/uploads/images/40016131/picture_pc_d7e84eb472b825defef2f2af9395fc89.jpeg?width=800" class="lazyload"></p><p name="E7aSf"><b>・出発地</b><br>ルート案内の出発地点を「現在地」と「名古屋大学駅1番出口」から選択できます。(※位置情報の提供を拒否した場合は名古屋大学駅1番出口からのご案内となります。)</p><p name="wDB0I"><b>・目的地</b><br>お探しの建物を選択すると、その建物に応じた部屋を選択できるようになります。(※部屋を選択しない場合は建物の入口までのご案内となります。)</p><p name="3koxR"><b>・検索</b><br>出発地と目的地を入力した後にタップすると、ルート案内の画面に遷移します。</p><h3 name="sonJ7">3. ルート案内画面</h3><p name="NcRUf">検索画面に入力された出発地から目的地までのルート案内を行います。</p><p name="QgMDt"><img src="data:image/svg+xml;charset=utf8,%3Csvg%20viewBox%3D%220%200%20100%20100%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22a%22%3E%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23f7f9f9%22%2F%3E%3Cstop%20offset%3D%2233%25%22%20stop-color%3D%22%23f7f9f9%22%2F%3E%3Cstop%20offset%3D%2250%25%22%20stop-color%3D%22%23fff%22%2F%3E%3Cstop%20offset%3D%2267%25%22%20stop-color%3D%22%23f7f9f9%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23f7f9f9%22%2F%3E%3CanimateTransform%20attributeName%3D%22gradientTransform%22%20type%3D%22translate%22%20from%3D%22-1%200%22%20to%3D%221%200%22%20begin%3D%220s%22%20dur%3D%221.5s%22%20repeatCount%3D%22indefinite%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Cpath%20class%3D%22rect%22%20fill%3D%22url(%23a)%22%20d%3D%22M-100-100h300v300h-300z%22%2F%3E%3C%2Fsvg%3E" width="620" height="1102" style="width: 372px; height: 661px;" alt="画像3" data-src="https://assets.st-note.com/production/uploads/images/40016290/picture_pc_d563273727ac7821db6c014270b8dd48.jpeg?width=800" class="lazyload"></p><p name="jtZGy"><b>・建物内表示</b><br>目的地の建物の付近にある「建物内表示」の吹き出しをタップすると、建物の外観と建物内の地図が表示されます。検索画面で選択した部屋が水色でハイライト表示されるようになっています。(※部屋を選択しない場合は「建物外観」の吹き出しが表示され、タップすると外観のみが表示されます。)</p><p name="y3NRK"><img src="data:image/svg+xml;charset=utf8,%3Csvg%20viewBox%3D%220%200%20100%20100%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22a%22%3E%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23f7f9f9%22%2F%3E%3Cstop%20offset%3D%2233%25%22%20stop-color%3D%22%23f7f9f9%22%2F%3E%3Cstop%20offset%3D%2250%25%22%20stop-color%3D%22%23fff%22%2F%3E%3Cstop%20offset%3D%2267%25%22%20stop-color%3D%22%23f7f9f9%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23f7f9f9%22%2F%3E%3CanimateTransform%20attributeName%3D%22gradientTransform%22%20type%3D%22translate%22%20from%3D%22-1%200%22%20to%3D%221%200%22%20begin%3D%220s%22%20dur%3D%221.5s%22%20repeatCount%3D%22indefinite%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Cpath%20class%3D%22rect%22%20fill%3D%22url(%23a)%22%20d%3D%22M-100-100h300v300h-300z%22%2F%3E%3C%2Fsvg%3E" width="620" height="1102" style="width: 372px; height: 661px;" alt="画像4" data-src="https://assets.st-note.com/production/uploads/images/40017410/picture_pc_d7e6e633d7357416e5cb02c968c9e66c.jpeg?width=800" class="lazyload"></p><h3 name="Vc5hS">4. メニュー</h3><p name="hjGu9">画面右上の3本線のボタン(ハンバーガーボタン)をタップすると、メニューが表示されます。<br></p><h3 name="9zvaZ">5.その他の機能</h3><p name="6swlC"><b>・PWA(Progressive Web Apps)</b><br>NU MapsはPWAという技術を使用しているので、お使いのスマートフォンのホーム画面に追加して、そのアイコンから開くと通常のスマホアプリのように利用することができるようになります。</p><h3 name="8075Z">6. 最後に</h3><p name="ZPiPI">NU Mapsの使い方をお読みいただきありがとうございました。このサービスであなたの生活をより快適にすることができれば幸いです。</p><p name="0YiZp">NU Mapsの今後のアップデートのために、「こんな機能がほしい」,「こうしたらもっと良くなる」といったご意見を募集しております。NU Mapsのメニューのご意見/ご要望からぜひあなたのご意見をお聞かせください。</p></div> <!----> <!----> <div style="display:none;" data-v-07d3b562><button data-type="primary" data-size="small" data-width="fit" data-disable-focus="false" type="button" data-file-widget="fileDownloadButton" undefined="" class="a-button" data-v-f0b94f7a><div class="a-button__inner" data-v-f0b94f7a><i aria-label="fileDownload" aria-hidden="true" class="a-icon a-icon--fileDownload a-icon--size_small"></i>
+  </div></button></div></div></div></div>
+  <div style="height: 60px;">
+  </div>
+  <script>
+    //変数定義
+    var navigationOpenFlag = false;
+    var navButtonFlag = true;
+    var focusFlag = false;
+    
+    //ハンバーガーメニュー
+        $(function(){
+    
+          $(document).on('click','.el_humburger',function(){
+            if(navButtonFlag){
+              spNavInOut.switch();
+              //一時的にボタンを押せなくする
+              setTimeout(function(){
+                navButtonFlag = true;
+              },200);
+              navButtonFlag = false;
+            }
+          });
+          $(document).on('click touchend', function(event) {
+            if (!$(event.target).closest('.bl_header,.el_humburger').length && $('body').hasClass('js_humburgerOpen') && focusFlag) {
+              focusFlag = false;
+              //scrollBlocker(false);
+              spNavInOut.switch();
+            }
+          });
+        });
+    
+    //ナビ開く処理
+    function spNavIn(){
+      $('body').removeClass('js_humburgerClose');
+      $('body').addClass('js_humburgerOpen');
+      setTimeout(function(){
+        focusFlag = true;
+      },200);
+      setTimeout(function(){
+        navigationOpenFlag = true;
+      },200);
+    }
+    
+    //ナビ閉じる処理
+    function spNavOut(){
+      $('body').removeClass('js_humburgerOpen');
+      $('body').addClass('js_humburgerClose');
+      setTimeout(function(){
+        $(".uq_spNavi").removeClass("js_appear");
+        focusFlag = false;
+      },200);
+      navigationOpenFlag = false;
+    }
+    
+    //ナビ開閉コントロール
+    var spNavInOut = {
+      switch:function(){
+        if($('body.spNavFreez').length){
+          return false;
+        }
+        if($('body').hasClass('js_humburgerOpen')){
+         spNavOut();
+        } else {
+         spNavIn();
+        }
+      }
+    };
+    </script>
+      <script src="https://d291vdycu0ht11.cloudfront.net/nuxt/production/939c7c2.js" defer></script>
+      <script src="https://d291vdycu0ht11.cloudfront.net/nuxt/production/note.f96d0aea1343e4b6164d.js" defer></script>
+      <script src="https://d291vdycu0ht11.cloudfront.net/nuxt/production/note.481bdd18e9c68c5b09e7.js" defer></script>
+      <script src="https://d291vdycu0ht11.cloudfront.net/nuxt/production/note.fde5c9c1276f22e9021a.js" defer></script>
+  </body>
+</html>
